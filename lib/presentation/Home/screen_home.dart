@@ -33,8 +33,12 @@ class SreenHome extends StatelessWidget {
               ListView(
                 children: const [
                   BackgroundCard(),
-                  MainTitleCard(
-                    title: 'Released in thr  past year',
+                  kheight,
+                  Padding(
+                    padding: EdgeInsets.only(left: 10),
+                    child: MainTitleCard(
+                      title: 'Released in the  past year',
+                    ),
                   ),
                   kheight,
                   MainTitleCard(

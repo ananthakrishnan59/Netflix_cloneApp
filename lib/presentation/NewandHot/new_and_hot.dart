@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:netflixclone/core/colors/colors.dart';
 import 'package:netflixclone/core/constance.dart';
+import 'package:netflixclone/presentation/NewandHot/Widgets/coming_soon_widget.dart';
+import 'package:netflixclone/presentation/NewandHot/Widgets/everyones_watching_widget.dart';
 
 class ScreenNewandHot extends StatelessWidget {
   const ScreenNewandHot({super.key});
@@ -35,11 +37,11 @@ class ScreenNewandHot extends StatelessWidget {
                   labelColor: kBlackColor,
                   unselectedLabelColor: kWhitecolor,
                   isScrollable: true,
-                  labelStyle:
-                      TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  labelStyle: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.bold),
                   indicator: BoxDecoration(
                       color: kWhitecolor, borderRadius: kradius30),
-                  tabs: [
+                  tabs: const [
                     Tab(
                       text: '🍿 Coming Soon',
                     ),
@@ -48,17 +50,23 @@ class ScreenNewandHot extends StatelessWidget {
                     )
                   ]),
             )),
-        body: TabBarView(children: [
-          _buildTabBarView("coming Soon"),
-          _buildTabBarView("hai")
-        ]),
+        body: TabBarView(
+            children: [_builComingSoon(), _buildEveryonesWatching()]),
       ),
     );
   }
 
-  _buildTabBarView(String name) {
-    return Center(
-      child: Text("$name"),
+  Widget _builComingSoon() {
+    return ListView.builder(
+      itemCount: 10,
+      itemBuilder: (BuildContext context, index) => const ComingSoonWidget(),
     );
+  }
+
+  Widget _buildEveryonesWatching() {
+    return ListView.builder(
+        itemCount: 10,
+        itemBuilder: (BuildContext context, index) =>
+            const EveryonesWatchingWidget());
   }
 }

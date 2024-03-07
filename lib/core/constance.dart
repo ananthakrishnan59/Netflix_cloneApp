@@ -14,6 +14,9 @@ const kheight20 = SizedBox(
 const kheight5 = SizedBox(
   height: 5,
 );
+const kheight50 = SizedBox(
+  height: 50,
+);
 //Border Radius
 
 final BorderRadius kradius10 = BorderRadius.circular(10);
@@ -28,3 +31,8 @@ const kMainImage =
 
 TextStyle KHomeTitleText =
     const TextStyle(fontSize: 14, fontWeight: FontWeight.bold);
+
+const newAndHotTemoImage =
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxh6wjVFOCna4gD_RepbZu8DmFaou8w9TO7w&usqp=CAU";
+
+const newAndHotTemoImage2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxi4itZdaOzrGio3RwM5uK_kNm03mVaeyvVw&usqp=CAU";
