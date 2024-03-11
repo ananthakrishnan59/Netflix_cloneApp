@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:netflixclone/core/colors/colors.dart';
-import 'package:netflixclone/core/constance.dart';
+import '../../core/colors/colors.dart';
 
 class VideoWidget extends StatelessWidget {
+  final String? videoImage;
   const VideoWidget({
     super.key,
+    this.videoImage,
   });
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        SizedBox(
+        Container(
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
           width: double.infinity,
           height: 200,
           child: Image.network(
-            newAndHotTemoImage,
+            '$videoImage',
             fit: BoxFit.cover,
           ),
         ),
@@ -23,18 +25,18 @@ class VideoWidget extends StatelessWidget {
           bottom: 10,
           right: 10,
           child: CircleAvatar(
-            radius: 20,
+            radius: 25,
             backgroundColor: Colors.black.withOpacity(0.5),
             child: IconButton(
               onPressed: () {},
               icon: const Icon(
                 Icons.volume_off,
-                color: kWhitecolor,
-                size: 20,
+                color: kWhiteColour,
+                size: 22,
               ),
             ),
           ),
-        ),
+        )
       ],
     );
   }

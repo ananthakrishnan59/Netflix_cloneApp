@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:netflixclone/core/api.constants.dart';
 import 'package:netflixclone/core/constants.dart';
-import 'package:netflixclone/presentation/widgets/main_card.dart';
+import 'package:netflixclone/presentation/home/widgets/number_movie_card.dart';
 import 'package:netflixclone/presentation/widgets/main_title.dart';
-import '../../core/api.constants.dart';
 
-class MainTitleCard extends StatelessWidget {
-  final String title;
+
+class NumberTitleCard extends StatelessWidget {
   final Future<List<dynamic>> movies;
 
-  const MainTitleCard({
+  const NumberTitleCard({
     Key? key,
-    required this.title,
     required this.movies,
   }) : super(key: key);
 
@@ -19,41 +18,36 @@ class MainTitleCard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-          child: MainTitle(title: title),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          child: MainTitle(title: 'Top 10 Tv Shows In India Today'),
         ),
         FutureBuilder(
           future: movies,
           builder: (context, snapshot) {
             if (snapshot.hasError) {
-              return Text('Error: ${snapshot.error}');
+              return Text('error:${snapshot.error}');
             } else if (snapshot.hasData) {
               return LimitedBox(
                 maxHeight: 200,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: List.generate(
-                    snapshot.data!.length,
+                    10,
                     (index) {
                       final movie = snapshot.data![index];
-
-                      // Use null-aware operator to handle null posterPath
-                      final imageUrl =
+                      final image =
                           ApiConstants.imageBaseUrl + (movie.posterPath ?? '');
-
-                      // Print the constructed image URL for debugging
-                      print('Image URL is : $imageUrl');
-
-                      return MainCard(
-                        image: imageUrl,
+                      return NumberMovieCard(
+                        image: image,
+                        index: index + 1,
                       );
                     },
                   ),
                 ),
               );
             } else {
-              return const CircularProgressIndicator();
+              return CircularProgressIndicator();
             }
           },
         ),
